@@ -1,0 +1,50 @@
+{% load static %}
+{% load static tailwind_tags %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        <!-- {% tailwind_preload_css %} -->
+        {% tailwind_css %}
+        {% block script %}
+        {% endblock %}
+    </head>
+    <style>
+        [contentEditable=true]:empty:before {
+            content: attr(data-placeholder);
+            color: gray
+        }
+    </style>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="{% static 'network/index.js' %}"></script>
+    <body class="relative w-screen h-screen text-[14px]">            
+        {% static 'network/network_background_6.png' as background_image_url %}
+        <div class="background-layer absolute -z-10 bg-no-repeat bg-cover bg-center inset-0" style="background-image: url('{{ background_image_url }}');"></div>
+        <div class="layout-layer relative z-10 w-svw h-svh" >
+            <div class="relative z-10 flex w-full h-full">
+                {% include "network/nav/desktop_nav.html" %}
+                {% include "network/nav/mobile_nav.html" %} 
+                <div class="main_container w-full h-full">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>         
+            <div id="modal-layer">
+  
+            </div>
+            <div id="message" class="absolute z-50 bottom-16 left-1/2 -translate-x-1/2 ">
+                
+            </div>
+            <div id="confirm-action" class="absolute z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+               
+            </div>
+        </div>
+    </body>
+
+</html>

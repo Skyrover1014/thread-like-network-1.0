@@ -1,0 +1,52 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+
+{% block body %}
+<div class="pt-24 pb-14 md:px-6 md:py-0 flex flex-1 flex-col items-center justify-center w-full h-full">
+    <div id="page-name" class="page_title pageName hidden md:flex justify-center items-center mt-2 ">Page Name</div>
+    
+    <div class="mobile_content_section md:desktop_content_section flex flex-col overflow-y-scroll w-full md:max-w-lg h-full md:h-4/5  p-3 mt-3 ">
+        <div id="home-page" class="home_page w-full">
+        </div>
+        
+        <div id="profile-page" class="profile_page w-full mb-3">
+            <!-- <div id="profile-info">
+            </div> -->
+        </div>
+        {% if user.is_authenticated %}
+            <div id="compose-post" class=" compose_section flex w-full h-16">
+                <div class="flex flex-col w-full h-full space-y-3">
+                    <form class=" relative flex items-center w-full h-full px-2" id="compose-form">
+                        <img class=" absolute left-2 profile_image w-8 h-8 rounded-full border-[0.2px]  object-cover " src="/static/network/icons/Profile.png" alt="profile-picture">
+                        <div id="compose-content" class=" cursor-text flex items-center pl-12  h-auto min-h-10 w-full bg-transparent text-slate-500">What's new?</div>
+                        <button id="post-btn" class="absolute right-2 btn font-medium w-16" type="button">Post</button>
+                    </form>
+                    <hr class="w-full">
+                </div>
+            </div>
+        {% endif %}
+        
+        <div id="posts" class="posts_section">
+ 
+        </div>
+        <div class="moblile_pagination_section  my-4">
+            {% include "network/component/pagination.html" %} 
+        </div>
+    </div>
+</div>
+
+    
+     
+{% endblock %}
+
+{% block script %}
+    {{ auth_user|json_script:"auth-user-data" }}
+    <script>
+        const currentUser = "{{request.user.id}}"
+        const currentUserData = "{{request.user}}"
+        const auth_user_data = JSON.parse(document.getElementById('auth-user-data').textContent)
+        console.log(auth_user_data)
+    </script>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div class="pt-28 pb-14 md:px-6 md:py-0 flex flex-1 flex-col items-center justify-center w-full h-full">
+    <div class="mobile_content_section md:desktop_content_section flex flex-col max-w-sm h-4/5 max-h-[330px] md:h-[420px]  md:max-h-[420px] px-10 py-5 rounded-xl">
+        <form action="{% url 'login' %}" method="post" class="flex flex-col justify-start items-center w-full min-w-[100px] h-full">
+            {% csrf_token %}
+            <div id="page-name" class="page_title pageName hidden md:flex justify-center items-center w-32 mb-5"></div>
+
+            <div class="form-group">
+                <input autofocus class="form-control border-none rounded-md shadow-md" type="text" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input class="form-control border-none rounded-md shadow-md" type="password" name="password" placeholder="Password">
+            </div>
+            <button class="auth-btn font-medium mt-16" type="submit">Login</button>
+        </form>
+        
+        <div class="text-nowrap text-gray-500 mt-3">
+            Don't have an account? <a href="{% url 'register' %}" class="font-bold">Register here.</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        pageNames = document.querySelectorAll('.pageName')   
+
+        pageNames.forEach(pageName => {
+            pageName.innerText ="Login"
+        })
+
+        const path = window.location.pathname
+            console.log(path)
+            const isCurrent = path == "/login"
+            console.log(isCurrent)
+            const unactiveIcons = document.querySelectorAll('.out-login-icon')
+            const activeIcons = document.querySelectorAll('.in-login-icon')
+
+            unactiveIcons.forEach(icon => {
+                    icon.classList.toggle('hidden',isCurrent)
+                })
+
+            activeIcons.forEach(icon => {
+                icon.classList.toggle('hidden',!isCurrent)
+            })
+    })
+</script>
+
+{% if message %}
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        showMessage("{{ message|escapejs }}");
+      });
+    </script>
+{% endif %}
+{% endblock %}

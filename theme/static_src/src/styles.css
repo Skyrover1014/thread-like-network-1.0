@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.desktop_nav{
+    @apply fixed z-20 w-16 h-full left-0 hidden md:block 
+}
+.mobile_nav{
+    @apply  fixed z-20 w-full md:hidden shadow-md bg-transparent
+}
+
+/* backdrop-blur-md bg-barcelonaPrimary/80 border-white/20  */
+
+.container_col{
+    @apply w-full h-auto md:h-full flex flex-col justify-center items-center
+}
+
+.container_row{
+    @apply w-full h-full flex justify-around items-center
+}
+
+.btn_nav {
+    @apply w-14 h-10 text-neutral-600 hover:scale-90 hover:bg-stone-300 hover:rounded-lg flex justify-center items-center focus-visible:outline-none focus:outline-none
+}
+
+
+@layer components {
+    .mobile_content_section {
+        @apply bg-white/50 ring-1 ring-white/10 backdrop-blur-lg ;
+    }
+
+    .desktop_content_section {
+        @apply bg-white/80 ring-1 ring-white/10 backdrop-blur-md shadow-lg rounded-2xl ;
+    }
+}
+
+
+
+.message-box{
+    @apply flex w-[400px] h-12 items-center justify-center rounded-lg shadow-lg backdrop-blur-lg bg-stone-400/40 ring-1 ring-white/40 font-bold text-neutral-700 text-nowrap
+ }
+
+.confirm-box{
+    @apply flex flex-col w-[300px] h-48 items-center justify-center rounded-lg shadow-lg backdrop-blur-lg bg-white/40 ring-1 ring-white/40 font-bold text-neutral-700 text-nowrap
+}
+
+.page_title {
+    @apply  text-center text-white text-sm font-bold bg-stone-700/30 px-3 h-8 min-w-28 w-auto rounded-xl shadow-md
+}
+
+.modal-container {
+    @apply bg-white border-[0.5px] border-gray-500 shadow-md  rounded-t-3xl md:rounded-xl
+}
+
+.post-modal-container {
+    @apply bg-white border-[0.5px] border-gray-500 shadow-md  rounded-none md:rounded-xl
+}
+.image-modal-container {
+    @apply bg-white border-[0.5px] border-gray-500 shadow-md  rounded-none md:rounded-xl
+}
+
+
+.btn{
+    @apply w-24 h-10 font-bold bg-white border-[1px] border-gray-100 rounded-xl hover:bg-gray-200 hover:border-gray-200 text-center focus:ring-0 focus:outline-none focus:border-0 hover:scale-90 transition-transform
+}
+.auth-btn{
+    @apply w-24 h-8 bg-white border-[1px] border-gray-100 rounded-md hover:bg-gray-200 hover:border-gray-200 text-center focus-visible:outline-none focus:ring-0 focus:outline-none focus:border-0 hover:scale-90 transition-transform
+}
+.auth-input{
+    @apply border-none rounded-md shadow-md
+}
+.follow-btn{
+    @apply w-full h-10 rounded-xl shadow-md ring-[0.5px] ring-gray-200 active:scale-95 duration-150 ease-in-out focus-visible:outline-none focus:ring-0 focus:outline-none focus:border-0 hover:scale-90 transition-transform
+}
+#post-btn {
+    @apply focus-visible:outline-none focus:ring-0 focus:outline-none focus:border-0 hover:scale-90 transition-transform
+}
+.modal-btn {
+    @apply focus-visible:outline-none focus:ring-0 focus:outline-none focus:border-0 hover:scale-90 transition-transform
+}
+
+
+.num {
+    @apply w-20 h-6 text-nowrap text-center text-black
+}
+.modal-follow-btn{
+    @apply border-[1px] border-gray-200 rounded-xl active:scale-95 transition-all duration-150 ease-in-out focus-visible:outline-none focus:outline-none
+}
+
+/* .modal-following-btn{
+    @apply bg-white border-[1px] text-gray-400 border-gray-200 rounded-xl hover:bg-black hover:border-gray-100 hover:text-white transition-all
+} */
+
+.icon{
+    @apply w-[34px] h-[34px] lg:w-[40px] lg:h-[40px] focus-visible:outline-none focus:outline-none
+}

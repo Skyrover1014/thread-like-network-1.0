@@ -1,0 +1,63 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <div class="pt-28 pb-14 md:px-6 md:py-0 flex flex-1 flex-col items-center justify-center w-full h-full">
+        <div class="mobile_content_section md:desktop_content_section flex flex-col max-w-sm h-[400px] md:h-[500px] px-10 py-5 rounded-xl">            
+            <form action="{% url 'register' %}" method="post" class="flex flex-col justify-center items-center w-full min-w-[100px] h-full">
+                {% csrf_token %}
+                <div id="page-name" class="page_title hidden pageName md:flex justify-center items-center w-32 mb-5 "></div>
+                <div class="form-group">
+                    <input class="form-control auth-input" autofocus type="text" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control auth-input" type="email" name="email" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <input class="form-control auth-input" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input class="form-control auth-input" type="password" name="confirmation" placeholder="Confirm Password">
+                </div>
+                <button class="auth-btn font-medium mt-12" type="submit">Register</button>
+                <!-- <input class="btn btn-primary" type="submit" value="Register"> -->
+            </form>
+            
+            <div class="text-nowrap text-gray-500 mt-3">
+                Already have an account? <a href="{% url 'login' %}" class="font-bold" >Log In here.</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            pageNames = document.querySelectorAll('.pageName')   
+            pageNames.forEach(pageName => {
+                pageName.innerText ="Register"
+            })
+
+            const path = window.location.pathname
+            console.log(path)
+            const isCurrent = path == "/register"
+            console.log(isCurrent)
+            const unactiveIcons = document.querySelectorAll('.out-register-icon')
+            const activeIcons = document.querySelectorAll('.in-register-icon')
+
+            unactiveIcons.forEach(icon => {
+                    icon.classList.toggle('hidden',isCurrent)
+                })
+
+            activeIcons.forEach(icon => {
+                icon.classList.toggle('hidden',!isCurrent)
+            })
+        })
+    </script>
+
+{% if message %}
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        showMessage("{{ message|escapejs }}");
+      });
+    </script>
+{% endif %}
+{% endblock %}
