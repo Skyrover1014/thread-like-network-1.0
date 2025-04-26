@@ -130,7 +130,7 @@ cython_debug/
 # ------------------------------------------------------
 
 # Tailwind static output
-theme/static/css/dist/
+# theme/static/css/dist/
 
 # npm
 node_modules/
@@ -138,7 +138,7 @@ theme/static_src/package-lock.json
 theme/static_src/node_modules/
 
 # Django collectstatic output
-staticfiles/
+# staticfiles/
 
 # coverage tools / lock files（如無團隊需求也可刪）
 poetry.lock
