@@ -6,10 +6,13 @@ certifi==2024.8.30
 chardet==5.2.0
 charset-normalizer==3.4.0
 click==8.1.7
+cloudinary==1.44.0
 cookiecutter==2.6.0
 dj-database-url==2.3.0
 Django==5.1.4
 django-browser-reload==1.17.0
+django-cloudinary-storage==0.3.0
+django-debug-toolbar==5.1.0
 django-tailwind @ git+https://github.com/timonweb/django-tailwind.git@4ba910732cd3782b314ef3a13ce7bdc47c764ffd
 gunicorn==23.0.0
 h11==0.16.0
@@ -23,6 +26,7 @@ pillow==11.2.1
 psycopg2-binary==2.9.10
 Pygments==2.18.0
 python-dateutil==2.9.0.post0
+python-dotenv==1.1.0
 python-slugify==8.0.4
 PyYAML==6.0.2
 requests==2.32.3
@@ -35,4 +39,3 @@ typing_extensions==4.13.2
 urllib3==2.2.3
 uvicorn==0.34.2
 whitenoise==6.9.0
-python-dotenv==1.1.0
