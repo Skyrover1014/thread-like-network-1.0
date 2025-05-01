@@ -76,7 +76,7 @@
     @apply focus-visible:outline-none focus:ring-0 focus:outline-none focus:border-0 hover:scale-90 transition-transform
 }
 .modal-btn {
-    @apply focus-visible:outline-none focus:ring-0 focus:outline-none focus:border-0 hover:scale-90 transition-transform
+    @apply focus-visible:outline-none focus:ring-0 focus:outline-none focus:border-0 transition-transform
 }
 
 

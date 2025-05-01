@@ -1086,10 +1086,10 @@ const FollowModalView = {
                     
                     <div id="modal-header" class="w-full min-w-96 h-16 flex justify-center items-center space-x-[0.3px]">
                         <button id="modal-follower" class=" modal-btn flex-shrink-0 font-semibold w-[50%] h-full border-b-[1px] border-gray-400 text-gray-400 ">Followers
-                            <div id="modal-follower-count" class="font-normal text-[12px]">${user.followers_count}</div>
+                            <div id="modal-follower-count" class="  font-normal text-[12px]">${user.followers_count}</div>
                         </button>
                         <button id="modal-following" class="modal-btn flex-shrink-0 font-semibold w-[50%] h-full border-b-[1px] border-gray-400 text-gray-400 ">Following
-                            <div id="modal-following-count" class="font-normal text-[12px]">${user.following_count}</div>
+                            <div id="modal-following-count" class=" font-normal text-[12px]">${user.following_count}</div>
                         </button>
                     </div>
                     
