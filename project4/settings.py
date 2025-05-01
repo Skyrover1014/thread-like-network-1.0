@@ -41,8 +41,8 @@ if RENDER_EXTERNAL_HOSTNAME:
 
 INSTALLED_APPS = [
     'network',
-    # 'tailwind',
-    # 'theme',
+    'tailwind',
+    'theme',
     'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 ]
 
 if DEBUG:
-    INSTALLED_APPS += ['tailwind','theme','django_browser_reload']
+    INSTALLED_APPS += ['django_browser_reload']
 
 
 TAILWIND_APP_NAME = 'theme'
