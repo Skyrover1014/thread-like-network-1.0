@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'network',
     'tailwind',
     'theme',
-    'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,7 +52,7 @@ INSTALLED_APPS = [
 ]
 
 if DEBUG:
-    INSTALLED_APPS += ['django_browser_reload']
+    INSTALLED_APPS += ['debug_toolbar','django_browser_reload']
 
 
 TAILWIND_APP_NAME = 'theme'
@@ -67,7 +66,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -76,6 +75,7 @@ MIDDLEWARE = [
 ]
 
 if DEBUG:
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
     MIDDLEWARE += ['django_browser_reload.middleware.BrowserReloadMiddleware']
 
 
