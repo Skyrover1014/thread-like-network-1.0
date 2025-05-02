@@ -134,7 +134,7 @@ theme/static/css/dist/
 
 # npm
 node_modules/
-theme/static_src/package-lock.json
+# theme/static_src/package-lock.json
 theme/static_src/node_modules/
 
 # Django collectstatic output
