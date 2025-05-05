@@ -85,14 +85,6 @@ python manage.py runserver
 * 設定 Tailwind + django-tailwind 架構，結合 Django 模板與 modern CSS workflow。
 * 除錯階段加入 django-debug-toolbar、django-browser-reload 加速本地開發流程。
 
-## 開發難題(回顧中)
-
-* **資料關聯查詢過度導致 N+1 問題** ：初期在處理 posts 和 likes/follows 的查詢時未優化，導致多次重複查詢，造成效能瓶頸。
-* **Follow 按鈕點擊後需同步多處資料狀態** ：為避免操作延遲與 UI 同步錯亂，需設計精確的狀態管理流程與後端資料回傳結構。
-* **重複事件監聽導致效能下降與記憶體洩漏** ：Like/Edit 等功能在貼文 DOM 重繪後失效，需導入事件委派與元件狀態設計。
-* **編輯貼文功能出現 UI 衝突** ：未控制使用者同時開啟多個編輯區，導致行為錯亂，後來透過狀態管理與 UI 狀態切換限制解決。
-* **Render 伺服器部署相依套件問題** ：如 Cloudinary 未正確設定時導致靜態資源錯誤，需針對不同環境進行條件式設置與除錯。
-
 ### **📌 免責聲明與使用說明**
 
 > **免責聲明**
