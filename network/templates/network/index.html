@@ -18,7 +18,7 @@
             <div id="compose-post" class=" compose_section flex w-full h-16">
                 <div class="flex flex-col w-full h-full space-y-3">
                     <form class=" relative flex items-center w-full h-full px-2" id="compose-form">
-                        <img class=" absolute left-2 profile_image w-8 h-8 rounded-full border-[0.2px]  object-cover " src="/static/network/icons/Profile.png" alt="profile-picture">
+                        <img class=" absolute left-2 profile_image profile-button w-8 h-8 rounded-full border-[0.2px]  object-cover " src="/static/network/icons/Profile.png" alt="profile-picture" data-user="{{request.user.id}}">
                         <div id="compose-content" class=" cursor-text flex items-center pl-12  h-auto min-h-10 w-full bg-transparent text-slate-500">What's new?</div>
                         <button id="post-btn" class="absolute right-2 btn font-medium w-16" type="button">Post</button>
                     </form>
