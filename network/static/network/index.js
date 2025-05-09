@@ -472,7 +472,7 @@ const PostModalView = {
                         <div class="modal_content w-full h-auto min-h-[200px] min-w-96 px-4 pt-3"> 
                             <div class="w-full flex items-start space-x-3">
                                 <div class="pt-2 min-w-[32px] min-h-[32px]">
-                                    <img class=" profile-button cursor-pointer shrink-0 w-8 h-8 rounded-full object-cover" src="${profile_image}"  alt="profile-picture">
+                                    <img class=" profile-button cursor-pointer shrink-0 w-8 h-8 rounded-full object-cover" src="${profile_image}" data-user=${auth_id}  alt="profile-picture">
                                 </div>
                                 <div class="flex flex-col w-full max-h-[500px] items-start">
                                     <div class="flex w-full h-5 font-bold">${user}</div>

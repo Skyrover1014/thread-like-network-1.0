@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-# from cloudinary.models import CloudinaryField
+from cloudinary.models import CloudinaryField
 
 
 
@@ -8,9 +8,9 @@ class User(AbstractUser):
    followers_count = models.PositiveIntegerField(default=0)
    following_count = models.PositiveIntegerField(default=0)
    posts_count = models.PositiveIntegerField(default=0)
-#    profile_image = CloudinaryField('image', default='default_avatar_rwyl0z', blank=True, null=True)
+   profile_image = CloudinaryField('image', default='default_avatar_rwyl0z', blank=True, null=True)
 #    profile_image = CloudinaryField('image', default='https://res.cloudinary.com/dj4xqzv8g/images/default_avatar.png')
-   profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True,default='profile_images/default_avatar.png')
+#    profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True,default='profile_images/default_avatar.png')
 
    def serialize(self):
        return {
