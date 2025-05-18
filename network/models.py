@@ -34,7 +34,7 @@ class Post(models.Model):
     def __str__(self):
         return f"{self.poster.username} at{self.created_time} :{self.content[:30]}"
     
-    def serialize(self, auth_user = None, fields =None):
+    def serialize(self, auth_user = None, fields =None, is_like = None, liked_user_ids = None):
         full_data ={
             "id": self.id,
             "poster": self.poster.username,
@@ -45,7 +45,10 @@ class Post(models.Model):
             "created_time":self.created_time.isoformat(),
             "likes_count":self.likes_count,
             "likes":[user.username for user in self.likes.all()],
-            "is_like":self.likes.filter(id=auth_user.id).exists() if auth_user else False 
+            "is_like": is_like if is_like is not None else (
+                auth_user.id in liked_user_ids if liked_user_ids and auth_user else
+                self.likes.filter(id=auth_user.id).exists()  if auth_user else False 
+                ) 
         }
         if fields:
             return {field:full_data[field] for field in fields if field in full_data}

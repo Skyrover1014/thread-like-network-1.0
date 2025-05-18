@@ -251,13 +251,14 @@ def like_post(request,post_id):
         return error_response("Like_post:User need to login", status=404)
 
     try: 
-        post = Post.objects.prefetch_related("likes").only("likes_count","likes").get(pk=post_id)
+        post = Post.objects.select_related("poster").prefetch_related("likes").get(pk=post_id)
+        
     except Post.DoesNotExist:
         return error_response("Like_post: Post not found", status=404)
     
     try:
-        like_or_unlike(post,auth_user)
-        data =post.serialize(auth_user,["likes","is_like","likes_count"]) 
+        is_like, liked_user_ids = like_or_unlike(post,auth_user)
+        data =post.serialize(auth_user,["likes","is_like","likes_count"],is_like, liked_user_ids) 
     except Exception as e: 
         return error_response(f"Like_post:{str(e)}", status=500)
     
@@ -267,12 +268,16 @@ def like_post(request,post_id):
 
 ## helper function
 def like_or_unlike(post,auth_user):
+
     try:
-        with transaction.atomic():
-            if post.likes.filter(pk=auth_user.pk).exists(): 
-                post.likes.remove(auth_user)
-            else:
-                post.likes.add(auth_user) 
+        liked_user_ids = set(user.id for user in post.likes.all())
+        if auth_user.id in liked_user_ids:
+            post.likes.remove(auth_user)
+            return False,liked_user_ids 
+        else:
+            post.likes.add(auth_user) 
+            return True ,liked_user_ids
+
     except Exception as e:
             raise Exception(f"Error in like_or_unlike: {str(e)}") 
 

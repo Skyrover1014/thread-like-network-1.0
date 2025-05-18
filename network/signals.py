@@ -31,7 +31,11 @@ def update_post_count_on_delete(sender, instance, **kwargs):
     instance.poster.save()
 
 @receiver(m2m_changed, sender = Post.likes.through)
-def updated_likes_count(sender, instance, action, **kwargs):
+def updated_likes_count(sender, instance, action, pk_set, **kwargs):
     if action in ("post_add", "post_remove"):
-        instance.likes_count = instance.likes.count()
+        if action == "post_add":
+            instance.likes_count += len(pk_set)
+        elif action == "post_remove":
+            instance.likes_count -= len(pk_set)
+        # instance.likes_count = instance.likes.count()
         instance.save()
